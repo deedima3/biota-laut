@@ -21,20 +21,23 @@
       "adaptiveIcon": {
         "foregroundImage": "./src/assets/splash.png",
         "backgroundColor": "#ffffff"
-      }
+      },
+      "package": "com.deedima3.biotalaut"
     },
     "plugins": [
-      [
-        "@viro-community/react-viro",
-        {
-          "androidXrMode": "AR"
-        }
-      ],
       "expo-router"
     ],
     "experiments": {
       "tsconfigPaths": true
     },
-    "jsEngine": "hermes"
+    "jsEngine": "hermes",
+    "extra": {
+      "router": {
+        "origin": false
+      },
+      "eas": {
+        "projectId": "2e590b6b-1b31-4aae-8384-bb74b42ccecc"
+      }
+    }
   }
 }

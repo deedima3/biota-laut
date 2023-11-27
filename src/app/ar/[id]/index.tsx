@@ -1,9 +1,10 @@
 import { useQuery } from '@tanstack/react-query'
-import { ViroARCamera, ViroARScene } from '@viro-community/react-viro'
 import { getBiotaByID } from 'api/biota'
 import { useLocalSearchParams } from 'expo-router'
 import { View } from 'moti'
 import React from 'react'
+import { ArViewerView } from "react-native-ar-viewer";
+import { Platform } from 'react-native'
 
 const Biota = () => {
     const { id } = useLocalSearchParams()
@@ -12,10 +13,22 @@ const Biota = () => {
         queryFn : () => getBiotaByID(id as string),
         queryKey : ['biota'],
     })
-  return (
-    <ViroARScene className='w-full h-full'>
 
-    </ViroARScene>
+  return (
+    <ArViewerView 
+    style={{flex: 1}}
+    model={Platform.OS === 'android' ? 'dice.glb' : 'dice.usdz'}
+    lightEstimation
+    manageDepth
+    allowRotate
+    allowScale
+    allowTranslate
+    disableInstantPlacement
+    onStarted={() => console.log('started')}
+    onEnded={() => console.log('ended')}
+    onModelPlaced={() => console.log('model displayed')}
+    onModelRemoved={() => console.log('model not visible anymore')}
+    planeOrientation="both" />
   )
 }
 
