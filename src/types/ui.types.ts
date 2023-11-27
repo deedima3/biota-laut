@@ -1,11 +1,23 @@
-import type { Control } from "react-hook-form";
+import type { Control, FieldErrors } from "react-hook-form";
 
 type InputParams = {
   label: string;
-  disabled: boolean;
-  placeholder: string;
+  disabled?: boolean;
+  placeholder?: string;
   name: string;
   control: Control;
+  errors : FieldErrors
 };
 
-export { InputParams };
+type IconParams = {
+  currentColor? : string;
+  extraClass? : string;
+}
+
+type StyledButtonParams = {
+  title : string;
+  onPress : () => void;
+  extraClass? : string
+}
+
+export { InputParams, IconParams, StyledButtonParams};

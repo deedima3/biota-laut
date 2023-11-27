@@ -1,0 +1,5 @@
+const DEFAULT_BRAND_ICON_COLOR = '#777777'
+
+export {
+    DEFAULT_BRAND_ICON_COLOR
+}

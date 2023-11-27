@@ -1,13 +1,11 @@
 import { QueryClient } from "@tanstack/react-query";
-import axios from "axios";
+import Pocketbase from 'pocketbase';
 
-const axiosClient = axios.create({
-  baseURL: process.env.NEXT_PUBLIC_BASE_API,
-  headers: {
-    "Content-Type": "application/json",
-  },
-});
+const pb = new Pocketbase('https://biota.ryvenna.dev')
 
-export const queryClient = new QueryClient();
+const queryClient = new QueryClient();
 
-export default axiosClient;
+export {
+  pb,
+  queryClient
+}
