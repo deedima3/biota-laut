@@ -4,6 +4,8 @@ import { View, Text, MotiScrollView } from 'moti'
 import React from 'react'
 import { useQuery } from '@tanstack/react-query'
 import BiotaCard from 'components/Card/BiotaCard'
+import { getAllQuiz } from 'api/quiz'
+import LoadingPulse from 'components/Loader/LoadingPulse'
 
 const ARDashboard = () => {
     const onBack = () => {
@@ -11,8 +13,8 @@ const ARDashboard = () => {
     }
 
     const { data, isLoading } = useQuery({
-        queryFn : () => getAllBiota(),
-        queryKey : ['biota'],
+        queryFn : () => getAllQuiz(),
+        queryKey : ['quiz'],
     })
     return (
         <MotiScrollView
@@ -36,10 +38,10 @@ const ARDashboard = () => {
             </View>
             <View className='mt-4 text-black w-full flex flex-col items-center'>
                 <Text className='text-base font-semibold'>
-                    AR LEARNING PATH
+                    AR QUIZ
                 </Text>
                 <Text className='text-4xl font-bold text-center'>
-                    Explore Marine Species
+                    Test Your Knowledge
                 </Text>
                 <Text className='text-gray-400 text-xl'>
                     Select one
@@ -47,11 +49,12 @@ const ARDashboard = () => {
             </View>
             <View className='flex flex-col w-full mt-14'>
                 {
-                    data && data.map(({emoji, name, id}, key) => {
-                        return <BiotaCard route='ar' emoji={emoji} title={name} id={id} key={key}/>
+                    data && data.map(({emoji, title, id}, key) => {
+                        return <BiotaCard route='quiz' emoji={emoji} title={title} id={id} key={key}/>
                     })
                 }
             </View>
+            <LoadingPulse isLoading={isLoading}/>
         </MotiScrollView>
     )
 }

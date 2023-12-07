@@ -7,6 +7,7 @@ const getAllBiota = async () => {
 
 const getBiotaByID = async (id : string) => {
     const res = await pb.collection('biota').getOne(id)
+    console.log(res)
     return res
 }
 

@@ -7,11 +7,12 @@ type BiotaCard = {
     emoji: string;
     title: string;
     id : string;
+    route : string
 }
 
-const BiotaCard = ({ title, emoji, id}: BiotaCard) => {
+const BiotaCard = ({ title, emoji, id, route}: BiotaCard) => {
     return (
-        <Pressable className='flex flex-row items-center rounded-md px-3 py-2 border-[1px]' onPress={() => router.push(`/ar/${id}`)}>
+        <Pressable className='flex flex-row items-center rounded-md px-3 py-2 border-[1px] mt-5' onPress={() => router.push(`/${route}/${id}`)}>
                 <View className='flex flex-row items-center w-full bg-white'>
                 <View className='w-12 h-12 bg-gray-300 rounded-full flex flex-row items-center justify-center'>
                     <Text className='w-max h-max text-2xl'>
